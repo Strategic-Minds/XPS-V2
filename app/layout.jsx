@@ -1,10 +1,10 @@
 import './globals.css';
 
 export const metadata = {
-  title: 'Phoenix Epoxy Pros | Digital Bid System',
-  description: 'Digital estimate, floor visualizer, proposal, and dashboard system for Phoenix Epoxy Pros.',
+  title: 'National Epoxy Pros | Digital Bid System',
+  description: 'National epoxy floor lead generation, design center, visualizer, digital bid, WhatsApp updates, and customer dashboard system powered by Xtreme Polishing Systems.',
   manifest: '/manifest.json',
-  appleWebApp: { capable: true, title: 'Phoenix Epoxy', statusBarStyle: 'black-translucent' }
+  appleWebApp: { capable: true, title: 'National Epoxy', statusBarStyle: 'black-translucent' }
 };
 
 export const viewport = { themeColor: '#d99a00', width: 'device-width', initialScale: 1 };
