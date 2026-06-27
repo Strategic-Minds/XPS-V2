@@ -6,6 +6,11 @@ export const metadata = {
   description:
     "National Epoxy Pros builds premium epoxy floor systems with a fast digital bid workflow at nationalepoxypros.com.",
   applicationName: "National Epoxy Pros",
+  manifest: "/manifest.json",
+  icons: {
+    icon: "/icon.svg",
+    apple: "/icon.svg",
+  },
   appleWebApp: {
     title: "National Epoxy",
     capable: true,
