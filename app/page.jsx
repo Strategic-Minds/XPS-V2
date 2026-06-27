@@ -139,7 +139,7 @@ export default function Home() {
 
         <section id="systems" className="productBand">
           <article className="comparisonCard" aria-label="Before and after floor preview">
-            <img src="/images/before-after-garage.webp" alt="Before and after epoxy garage floor preview" />
+            <img src="/images/before-after-garage.svg" alt="Before and after epoxy garage floor preview" />
           </article>
 
           <div className="productCards">
