@@ -1,5 +1,12 @@
-const CACHE_NAME = "national-epoxy-pros-v1";
-const CORE_ASSETS = ["/", "/design-center", "/manifest.json", "/icon.svg"];
+const CACHE_NAME = "national-epoxy-pros-v2";
+const CORE_ASSETS = [
+  "/",
+  "/design-center",
+  "/manifest.json",
+  "/icon.svg",
+  "/images/hero-garage-car.svg",
+  "/images/before-after-garage.svg",
+];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
@@ -21,6 +28,7 @@ self.addEventListener("activate", (event) => {
 
 self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
+  if (!event.request.url.startsWith(self.location.origin)) return;
 
   event.respondWith(
     caches.match(event.request).then((cached) => {
@@ -32,7 +40,10 @@ self.addEventListener("fetch", (event) => {
           caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
           return response;
         })
-        .catch(() => caches.match("/"));
+        .catch(() => {
+          if (event.request.mode === "navigate") return caches.match("/");
+          return caches.match(event.request);
+        });
     }),
   );
 });
