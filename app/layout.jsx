@@ -1,3 +1,5 @@
+import "./globals.css";
+
 export const metadata = {
   metadataBase: new URL("https://nationalepoxypros.com"),
   title: "National Epoxy Pros | Digital Bid System",
