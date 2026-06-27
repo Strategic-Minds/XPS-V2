@@ -1,11 +1,28 @@
-import PWAInstallButton from "./pwa-install-button";
+const utilityItems = [
+  "Powered By Xtreme Polishing Systems",
+  "America's #1 Epoxy Super Store",
+  "70+ Locations Nationwide",
+  "Certified Trainers",
+  "Manufacturers With 30+ Years Of Experience",
+];
+
+const navItems = [
+  "Services",
+  "Floor Systems",
+  "Design Center",
+  "Visualizer",
+  "Resources",
+  "About",
+  "Reviews",
+  "Contact",
+];
 
 const stats = [
-  ["70+", "Locations", "Nationwide"],
-  ["Monthly", "Crew Training", "Program"],
-  ["Built On", "XPS Standards", "Nationwide"],
-  ["Faster", "Digital", "Estimate"],
-  ["Fast Response", "No Phone Tag", "Ever"],
+  ["pin", "70+", "Locations", "Nationwide"],
+  ["crew", "Monthly", "Crew Training", "Program"],
+  ["shield", "Built On", "XPS Standards", "Nationwide"],
+  ["bolt", "Faster", "Digital", "Estimate"],
+  ["check", "Fast Response", "No Phone Tag", "Ever"],
 ];
 
 const products = [
@@ -16,57 +33,66 @@ const products = [
 ];
 
 const process = [
-  ["01", "Enter Info", "Takes 60 seconds"],
-  ["02", "Prefill Estimate", "We gather your details"],
-  ["03", "Pick Finish", "Select system and color"],
-  ["04", "Visualizer", "See your floor direction"],
-  ["05", "Upload Photos", "Your photos. Our system."],
-  ["06", "Submit Bid", "Get your 15% discount"],
-  ["07", "Dashboard", "Track every step"],
+  ["form", "01", "Enter Info", "Takes 60 seconds"],
+  ["person", "02", "Prefill Estimate", "We gather your project details"],
+  ["palette", "03", "Pick Finish", "Select system and color"],
+  ["screen", "04", "Visualizer", "See your floor direction"],
+  ["upload", "05", "Upload Photos", "Your photos. Our system."],
+  ["approve", "06", "Submit Bid", "Get your 15% discount"],
+  ["dashboard", "07", "Dashboard", "Track every step in one place"],
 ];
 
 const trust = [
-  ["5-Star Rated", "Consistently rated high by customers"],
-  ["10,000+", "Projects completed"],
-  ["Licensed", "Professional crews you can trust"],
-  ["70+", "Locations nationwide"],
-  ["XPS", "Backed by standards"],
-  ["Fast", "No phone tag"],
+  ["stars", "5-Star Rated", "Consistently rated high by customers"],
+  ["crew", "10,000+ Projects", "Completed"],
+  ["shield", "Licensed & Insured", "Professional crews you can trust"],
+  ["chart", "70+ Locations", "Nationwide"],
+  ["badge", "Backed By XPS Standards", "National systems. Local teams."],
+  ["clock", "Fast Response", "No phone tag. We respect your time"],
 ];
+
+function Icon({ type }) {
+  return <span className={`lineIcon ${type}`} aria-hidden="true" />;
+}
 
 export default function Home() {
   return (
     <>
       <header className="utilityBar" aria-label="National Epoxy Pros trust bar">
-        <span>Powered by Xtreme Polishing Systems</span>
-        <span>America&apos;s #1 Epoxy Super Store</span>
-        <span>70+ Locations Nationwide</span>
-        <span>Certified Trainers</span>
-        <span>Manufacturers With 30+ Years Of Experience</span>
+        {utilityItems.map((item) => (
+          <span key={item}>
+            <Icon type="utility" />
+            {item}
+          </span>
+        ))}
       </header>
 
       <nav className="mainNav" aria-label="Primary navigation">
         <a className="brandLockup" href="/" aria-label="National Epoxy Pros home">
-          <span className="brandWings" aria-hidden="true">NEP</span>
+          <span className="brandMark" aria-hidden="true">
+            NEP
+          </span>
           <span>
             <b>National</b>
             <small>Epoxy Pros</small>
           </span>
         </a>
+
         <div className="navLinks">
-          <a href="#services">Services</a>
-          <a href="#systems">Floor Systems</a>
-          <a href="/design-center">Design Center</a>
-          <a href="#process">Visualizer</a>
-          <a href="#resources">Resources</a>
-          <a href="#about">About</a>
-          <a href="#reviews">Reviews</a>
-          <a href="#contact">Contact</a>
+          {navItems.map((item) => (
+            <a key={item} href={item === "Design Center" ? "/design-center" : `#${item.toLowerCase().replaceAll(" ", "-")}`}>
+              {item}
+            </a>
+          ))}
         </div>
+
         <div className="navCtas">
-          <PWAInstallButton variant="desktop" />
-          <a className="goldCta" href="#digital-bid">Start My Digital Bid</a>
-          <a className="phone" href="tel:+14808008246">(480) 800-8246</a>
+          <a className="goldCta" href="#digital-bid">
+            Start My Digital Bid
+          </a>
+          <a className="phone" href="tel:+14808008246">
+            (480) 800-8246
+          </a>
         </div>
       </nav>
 
@@ -76,23 +102,28 @@ export default function Home() {
             <h1>
               <span>Premium Floors.</span>
               <span>Built To Last.</span>
-              <strong>Built By National.</strong>
+              <strong>Built By Pros.</strong>
             </h1>
             <p>High-performance epoxy, concrete coatings, and polished floors for homes, businesses, and industrial spaces.</p>
             <ul>
               <li>Durable. Beautiful. Easy to Maintain.</li>
               <li>Installed by Certified Professionals.</li>
-              <li>Backed by America&apos;s #1 Epoxy Super Store.</li>
+              <li>Backed by America's #1 Epoxy Super Store.</li>
             </ul>
             <div className="heroActions">
-              <a className="goldCta large" href="#digital-bid">Start My Digital Bid</a>
-              <a className="outlineCta" href="#systems">Explore Floor Systems</a>
+              <a className="goldCta large" href="#digital-bid">
+                Start My Digital Bid
+              </a>
+              <a className="outlineCta" href="#systems">
+                Explore Floor Systems
+              </a>
             </div>
           </div>
+
           <aside className="statsPanel" aria-label="Trust metrics">
-            {stats.map(([top, middle, bottom]) => (
+            {stats.map(([icon, top, middle, bottom]) => (
               <article key={`${top}-${middle}`}>
-                <span className="statIcon" aria-hidden="true" />
+                <Icon type={icon} />
                 <b>{top}</b>
                 <span>{middle}</span>
                 <small>{bottom}</small>
@@ -108,12 +139,17 @@ export default function Home() {
 
         <section id="systems" className="productBand">
           <article className="comparisonCard" aria-label="Before and after floor preview">
-            <div className="comparisonImage" />
+            <img src="/images/before-after-garage.webp" alt="Before and after epoxy garage floor preview" />
           </article>
+
           <div className="productCards">
             {products.map(([kind, title, subtitle, copy, link]) => (
               <article className="productCard" key={kind}>
-                <div className={`productArt ${kind}`} aria-hidden="true" />
+                <div className={`productArt ${kind}`} aria-hidden="true">
+                  <span />
+                  <span />
+                  <span />
+                </div>
                 <h2>{title}</h2>
                 <h3>{subtitle}</h3>
                 <p>{copy}</p>
@@ -127,9 +163,9 @@ export default function Home() {
           <article className="processPanel">
             <h2>The Simple 7-Step Digital Bid Process</h2>
             <div className="stepsRow">
-              {process.map(([num, title, copy]) => (
+              {process.map(([icon, num, title, copy]) => (
                 <div className="stepItem" key={num}>
-                  <span className="stepIcon" aria-hidden="true" />
+                  <Icon type={icon} />
                   <b>{num}</b>
                   <strong>{title}</strong>
                   <small>{copy}</small>
@@ -141,9 +177,9 @@ export default function Home() {
           <article className="trustPanel" id="reviews">
             <h2>Trusted By Thousands Of Homeowners &amp; Businesses</h2>
             <div className="trustRow">
-              {trust.map(([title, copy]) => (
+              {trust.map(([icon, title, copy]) => (
                 <div className="trustItem" key={title}>
-                  <span className="trustIcon" aria-hidden="true" />
+                  <Icon type={icon} />
                   <b>{title}</b>
                   <small>{copy}</small>
                 </div>
@@ -151,9 +187,12 @@ export default function Home() {
             </div>
           </article>
         </section>
-      </main>
 
-      <PWAInstallButton variant="mobile" />
+        <section className="screenReaderTail" id="contact" aria-label="Digital bid contact path">
+          <h2>Start Your National Epoxy Pros Digital Bid</h2>
+          <p>Submit project photos, choose your finish direction, and request the next step through the digital bid workflow.</p>
+        </section>
+      </main>
     </>
   );
 }
