@@ -7,7 +7,6 @@ import { DesignCenterSection } from "./components/DesignCenterSection";
 import { GallerySection } from "./components/GallerySection";
 import { ProductTrainingSection } from "./components/ProductTrainingSection";
 import { Footer } from "./components/Footer";
-
 export default function HomePage() {
   return (
     <>
